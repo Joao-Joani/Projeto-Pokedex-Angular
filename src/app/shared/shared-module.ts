@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PokeHeader } from './poke-header/poke-header';
 import { PokeSearch } from './poke-search/poke-search';
 import { PokeList } from './poke-list/poke-list';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -18,7 +19,8 @@ import { PokeList } from './poke-list/poke-list';
     PokeList
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ]
 })
 export class SharedModule { }
