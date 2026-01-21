@@ -4,33 +4,38 @@
 :host {
     main {
         margin-top: rem-calc(40);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
         .pokemon__names {
             position: relative;
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;
-
+            width: 100%;
+            max-width: rem-calc(600);
             height: 75px;
-
             padding: 0 rem-calc(30);
+            margin-bottom: rem-calc(10);
 
             h1 {
                 color: var(--branco);
                 font-size: rem-calc(32);
                 text-transform: capitalize;
+                z-index: 2;
             }
 
             h2 {
                 position: absolute;
                 font-weight: 100;
                 top: 0;
+                right: rem-calc(20);
                 font-size: rem-calc(60);
                 color: rgba(255, 255, 255, 0.1);
             }
 
-            h1,
-            h2 {
+            h1, h2 {
                 -webkit-animation-fill-mode: none !important;
                 animation-fill-mode: none !important;
             }
@@ -38,13 +43,16 @@
 
         .pokemon__status {
             position: relative;
+            width: 100%;
+            max-width: rem-calc(600);
 
             img {
                 position: absolute;
-                top: rem-calc(-90);
+                top: rem-calc(-80);
                 left: rem-calc(30);
-                max-width: rem-calc(130);
+                max-width: rem-calc(140);
                 z-index: 10;
+                filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.2));
 
                 -webkit-animation-fill-mode: none !important;
                 animation-fill-mode: none !important;
@@ -52,24 +60,31 @@
 
             .pokemon__stats {
                 background: var(--branco);
-                min-height: 43.9vh;
-                margin-top: rem-calc(10);
-                padding: rem-calc(110) rem-calc(35) rem-calc(30);
-                border-radius: rem-calc(50) rem-calc(50) 0 0;
+                
+                min-height: auto;
+                padding: rem-calc(90) rem-calc(35) rem-calc(30);
+                
+                border-radius: rem-calc(30);
+                
                 display: flex;
                 flex-direction: column;
+                
+                box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+                margin-bottom: rem-calc(40);
 
                 h2 {
                     margin-bottom: rem-calc(20);
                     font-weight: 700;
-                    font-size: rem-calc(32);
+                    font-size: rem-calc(28);
                     text-align: center;
                     color: var(--secondary-color);
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
                 }
 
                 .stats__container {
                     width: 100%;
-                    margin-bottom: rem-calc(20);
+                    margin-bottom: rem-calc(25);
                 }
 
                 .stat__row {
@@ -88,8 +103,8 @@
 
                     .stat__bar-bg {
                         width: 100%;
-                        height: rem-calc(10);
-                        background-color: #eee;
+                        height: rem-calc(8);
+                        background-color: #f0f0f0;
                         border-radius: rem-calc(10);
                         overflow: hidden;
                     }
@@ -116,36 +131,42 @@
                 }
 
                 .btn {
-                    margin-top: auto;
                     align-self: center;
+                    width: auto;
+                    min-width: rem-calc(150);
+                    padding: rem-calc(12) rem-calc(40);
+                    font-size: rem-calc(14);
+                    border-radius: rem-calc(50);
+                    transition: transform 0.2s ease;
+                    
+                    &:hover {
+                        transform: scale(1.05);
+                    }
                 }
             }
         }
 
-        @media (max-width: 420px) {
-            margin-top: rem-calc(10);
+        @media (max-width: 650px) {
+            margin-top: rem-calc(20);
 
             .pokemon__names {
-                h1 {
-                    font-size: rem-calc(20);
-                }
-
-                h2 {
-                    top: rem-calc(35);
-                    font-size: rem-calc(20);
-                }
+                padding: 0 rem-calc(20);
+                justify-content: space-between;
+                
+                h1 { font-size: rem-calc(24); }
+                h2 { font-size: rem-calc(40); right: rem-calc(20); }
             }
 
             .pokemon__status {
                 img {
-                    top: rem-calc(-80);
-                    left: 0;
-                    max-width: rem-calc(100);
+                    top: rem-calc(-70);
+                    left: rem-calc(20);
+                    max-width: rem-calc(110);
                 }
 
                 .pokemon__stats {
-                    min-height: 57vh;
-                    padding-top: rem-calc(50);
+                    padding-top: rem-calc(60);
+                    border-radius: rem-calc(30);
                 }
             }
         }

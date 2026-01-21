@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { PokeApi } from '../../service/poke-api';
 
 @Component({
@@ -13,7 +13,10 @@ export class PokeRandom implements OnInit {
   public loading: boolean = true;
   private url: string = "https://pokeapi.co/api/v2/pokemon";
 
-  constructor(private pokeService: PokeApi) {}
+  constructor(
+    private pokeService: PokeApi,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.getRadomPokemon();
@@ -26,6 +29,8 @@ export class PokeRandom implements OnInit {
       res => {
         this.pokemon = res;
         this.loading = false;
+        
+        this.cdr.detectChanges();
       },
       error => {
         console.error(error);

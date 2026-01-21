@@ -1,17 +1,18 @@
-@import './config-scss/variables.scss';
-@import './config-scss/reset.scss';
-@import './config-scss/rem-calc.scss';
-@import './config-scss/btn.scss';
-@import './config-scss/animation.scss';
+@import 'config-scss/reset.scss';
+@import 'config-scss/variables.scss';
+@import 'config-scss/rem-calc.scss';
+@import 'config-scss/btn.scss';
+@import 'config-scss/animation.scss';
 
-html {
-	font-family: 'Roboto', sans-serif;
-	background: var(--primary-color);
+body {
+    background-color: #262835;
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
 }
 
 main {
-	max-width: rem-calc(600);
-	box-sizing: border-box;
-	padding: 0 20px;
-	margin: 0 auto;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 rem-calc(20);
+    box-sizing: border-box;
 }
