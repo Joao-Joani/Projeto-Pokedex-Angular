@@ -151,7 +151,7 @@
 
             .pokemon__names {
                 padding: 0 rem-calc(20);
-                justify-content: space-between;
+                justify-content: flex-end; 
                 
                 h1 { font-size: rem-calc(24); }
                 h2 { font-size: rem-calc(40); right: rem-calc(20); }
