@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { PokeApi } from '../../service/poke-api';
-
 
 @Component({
   selector: 'poke-list',
@@ -8,7 +7,7 @@ import { PokeApi } from '../../service/poke-api';
   templateUrl: './poke-list.html',
   styleUrl: './poke-list.scss',
 })
-export class PokeList {
+export class PokeList implements OnInit {
 
   private setAllPokemons: any;
   public getAllPokemons: any;
@@ -16,7 +15,8 @@ export class PokeList {
   public apiError: boolean = false;
 
   constructor(
-    private pokeApiService: PokeApi
+    private pokeApiService: PokeApi,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -24,6 +24,8 @@ export class PokeList {
       res => {
         this.setAllPokemons = res.results;
         this.getAllPokemons = this.setAllPokemons;
+        
+        this.cdr.detectChanges(); 
       },
       error => {
         this.apiError = true;

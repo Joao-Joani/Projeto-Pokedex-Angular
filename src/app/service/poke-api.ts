@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-//Observable
-import { Observable } from 'rxjs';
-import { map, tap } from "rxjs/operators";
+import { Observable, forkJoin } from 'rxjs';
+import { map, tap, switchMap } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +17,22 @@ export class PokeApi {
   get apiListAllPokemons(): Observable<any> {
     return this.http.get<any>(this.url).pipe(
       tap(res => res),
-      tap(res => {
-        res.results.map((resPokemons: any) => {
-          this.apiGetPokemon(resPokemons.url).subscribe(
-            res => resPokemons.status = res
+      switchMap(res => {
+        const allPokemons = res.results.map((resPokemons: any) => {
+          return this.apiGetPokemon(resPokemons.url).pipe(
+            map(status => {
+              resPokemons.status = status;
+              return resPokemons;
+            })
           );
-        })
+        });
+
+        return forkJoin(allPokemons).pipe(
+          map(() => {
+            console.log('DADOS CARREGADOS:', res);
+            return res;
+          })
+        );
       })
     )
   }

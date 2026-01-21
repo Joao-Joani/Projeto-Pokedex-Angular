@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 
 //Modules
-import { PagesModule } from './pages/pages-module';
 import { HttpClientModule } from '@angular/common/http';
 
 //Components
@@ -17,7 +16,6 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PagesModule,
     HttpClientModule
   ],
   providers: [

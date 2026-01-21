@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { PokeApi } from '../../service/poke-api';
+
 @Component({
   selector: 'app-details',
   standalone: false,
   templateUrl: './details.html',
   styleUrl: './details.scss',
 })
-
 export class Details implements OnInit {
 
   private urlPokemon: string = 'https://pokeapi.co/api/v2/pokemon';
@@ -20,7 +20,8 @@ export class Details implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private pokeApiService: PokeApi
+    private pokeApiService: PokeApi,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +37,7 @@ export class Details implements OnInit {
       res => {
         this.pokemon = res;
         this.isLoading = true;
+        this.cdr.detectChanges();
       },
       error => {
         this.apiError = true;
