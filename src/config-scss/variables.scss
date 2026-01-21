@@ -1,7 +1,18 @@
 :root {
-	--branco: #fff;
-	--cinza: #efefef;
+    --branco: #fff;
+    --cinza: #efefef;
 
-	--primary-color: #262835;
-	--secondary-color: #ff5473;
+    --primary-color: #262835;
+    --secondary-color: #ff5473;
 }
+
+$pokedex-red: #dc0a2d;
+$pokedex-dark: #232323;
+$pokedex-screen: #dedede;
+
+$stat-hp: #4caf50;
+$stat-attack: #f44336;
+$stat-defense: #2196f3;
+$stat-special-attack: #9c27b0;
+$stat-special-defense: #3f51b5;
+$stat-speed: #ff9800;

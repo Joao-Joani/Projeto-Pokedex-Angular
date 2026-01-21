@@ -6,17 +6,20 @@ import { RouterModule } from '@angular/router';
 import { PokeHeader } from './poke-header/poke-header';
 import { PokeSearch } from './poke-search/poke-search';
 import { PokeList } from './poke-list/poke-list';
+import { PokeRandom } from './poke-random/poke-random';
 
 @NgModule({
   declarations: [
     PokeHeader,
     PokeSearch,
-    PokeList
+    PokeList,
+    PokeRandom
   ],
   exports: [
     PokeHeader,
     PokeSearch,
-    PokeList
+    PokeList,
+    PokeRandom
   ],
   imports: [
     CommonModule,

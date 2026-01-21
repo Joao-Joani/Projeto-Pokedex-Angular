@@ -1,8 +1,6 @@
-<!-- Header -->
 <poke-header></poke-header>
 
 <main>
-
   <ng-template [ngIf]="isLoading">
     <section class="pokemon__names">
       <h1 class="slideInLeft">{{pokemon[0].name}}</h1>
@@ -16,20 +14,30 @@
         class="slideInDown"
       >
 
-      <article class="pokemon__status__statistics fadeIn">
-        <section>
-          <h3>Estatísticas</h3>
+      <article class="pokemon__stats fadeIn">
+        <h2>Estatísticas</h2>
 
-          <ol>
-            <li *ngFor="let value of pokemon[0].stats">
+        <div class="stats__container">
+          <ng-container *ngFor="let value of pokemon[0].stats">
+            <div class="stat__row">
+              <span class="stat__name">
                 {{ value.stat.name }}
+              </span>
 
-              <strong>
+              <div class="stat__bar-bg">
+                <div 
+                  class="stat__bar-fill" 
+                  [ngClass]="'stat--' + value.stat.name"
+                  [style.width.%]="value.base_stat > 100 ? 100 : value.base_stat"
+                ></div>
+              </div>
+
+              <span class="stat__number">
                 {{ value.base_stat }}
-              </strong>
-            </li>
-          </ol>
-        </section>
+              </span>
+            </div>
+          </ng-container>
+        </div>
 
         <a [routerLink]="['']" class="btn btn__secondary">
           Voltar

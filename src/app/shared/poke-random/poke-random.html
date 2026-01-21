@@ -1,0 +1,16 @@
+<section class="random-card" *ngIf="!loading">
+    <div class="random-card__content">
+        <h3>Pokémon do Dia</h3>
+        <h2>{{ pokemon.name }}</h2>
+        <a [routerLink]="['details', pokemon.id]" class="btn">
+            Ver Detalhes
+        </a>
+    </div>
+
+    <div class="random-card__image">
+        <img 
+            [src]="pokemon.sprites.other.dream_world.front_default" 
+            [alt]="pokemon.name"
+        >
+    </div>
+</section>
